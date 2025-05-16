@@ -3,35 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real-Time Chat App</title>
+    <title>Chat Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="chat-container">
         <header class="chat-header">
             <h1>Chat App</h1>
+            <div class="user-info">
+                <span id="username-display"></span>
+                <button id="logout-btn" class="btn-small">Logout</button>
+            </div>
         </header>
-        <div class="chat-messages" id="chat-messages"></div>
-        <div class="join-container" id="join-container">
-            <form id="username-form">
-                <input 
-                    type="text" 
-                    id="username" 
-                    placeholder="Enter your username..." 
-                    required
-                />
-                <button type="submit" class="btn">Join Chat</button>
-            </form>
+        
+        <div class="chat-main">
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <button class="tab-btn active" id="chats-tab">Chats</button>
+                    <button class="tab-btn" id="users-tab">Users</button>
+                    <button class="tab-btn" id="groups-tab">Groups</button>
+                </div>
+                
+                <!-- Chats Tab Content -->
+                <div class="tab-content active" id="chats-content">
+                    <div class="search-box">
+                        <input type="text" id="search-chats" placeholder="Search chats...">
+                    </div>
+                    <ul class="chat-list" id="chat-list">
+                        <li class="chat-item active" data-chat="global">
+                            <div class="chat-item-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="chat-item-content">
+                                <div class="chat-item-name">Global Chat</div>
+                                <div class="chat-item-last-message">Everyone can see these messages</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Users Tab Content -->
+                <div class="tab-content" id="users-content">
+                    <div class="search-box">
+                        <input type="text" id="search-users" placeholder="Search users...">
+                    </div>
+                    <div class="section-title">Online Users</div>
+                    <ul class="users-list" id="online-users-list"></ul>
+                    
+                    <div class="section-title">All Users</div>
+                    <ul class="users-list" id="all-users-list"></ul>
+                </div>
+                
+                <!-- Groups Tab Content -->
+                <div class="tab-content" id="groups-content">
+                    <div class="group-actions">
+                        <button id="create-group-btn" class="btn-small">Create Group</button>
+                    </div>
+                    <div class="search-box">
+                        <input type="text" id="search-groups" placeholder="Search groups...">
+                    </div>
+                    <ul class="group-list" id="group-list"></ul>
+                </div>
+            </div>
+            
+            <div class="chat-content">
+                <div class="chat-header-content">
+                    <div id="current-chat-info">
+                        <h3 id="current-chat-name">Global Chat</h3>
+                        <div id="chat-participants"></div>
+                    </div>
+                    <div id="user-typing-indicator"></div>
+                </div>
+                
+                <div class="chat-messages" id="chat-messages"></div>
+                
+                <div class="message-input-container">
+                    <form id="message-form">
+                        <input type="text" id="message-input" placeholder="Type a message..." required>
+                        <button type="submit" class="btn">Send</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="message-input-container" id="message-input-container" style="display: none;">
-            <form id="message-form">
-                <input 
-                    type="text" 
-                    id="message-input" 
-                    placeholder="Type a message..." 
-                    required
-                />
-                <button type="submit" class="btn">Send</button>
+    </div>
+    
+    <!-- Create Group Modal -->
+    <div id="create-group-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Create Group Chat</h2>
+            <form id="create-group-form">
+                <div class="form-group">
+                    <label for="group-name">Group Name</label>
+                    <input type="text" id="group-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Add Members</label>
+                    <div class="member-selection">
+                        <div class="selected-members" id="selected-members">
+                            <!-- Selected members will be added here -->
+                        </div>
+                        <input type="text" id="member-search" placeholder="Search users...">
+                        <div class="member-results" id="member-results"></div>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Create Group</button>
             </form>
         </div>
     </div>

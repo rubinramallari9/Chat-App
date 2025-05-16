@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App - Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="tabs">
+                <button class="tab-btn active" id="login-tab">Login</button>
+                <button class="tab-btn" id="register-tab">Register</button>
+            </div>
+            
+            <div class="auth-form" id="login-form">
+                <h2>Login to Chat</h2>
+                <div class="alert" id="login-alert" style="display: none;"></div>
+                <form id="form-login">
+                    <div class="form-group">
+                        <label for="login-username">Username</label>
+                        <input type="text" id="login-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Login</button>
+                </form>
+            </div>
+            
+            <div class="auth-form" id="register-form" style="display: none;">
+                <h2>Create Account</h2>
+                <div class="alert" id="register-alert" style="display: none;"></div>
+                <form id="form-register">
+                    <div class="form-group">
+                        <label for="register-username">Username</label>
+                        <input type="text" id="register-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <input type="password" id="register-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm-password">Confirm Password</label>
+                        <input type="password" id="register-confirm-password" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>
